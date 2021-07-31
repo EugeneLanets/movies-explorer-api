@@ -40,7 +40,19 @@ const login = async (req, res, next) => {
   }
 };
 
+const logout = async (req, res) => {
+  res
+    .status(200)
+    .clearCookie('jwt', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    })
+    .send({ message: 'Вы успешно вышли из системы!' });
+};
+
 module.exports = {
   createUser,
   login,
+  logout,
 };

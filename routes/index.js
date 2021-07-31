@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
 
 router.get('/', (req, res) => {
   res.send({ message: 'got it now' });
@@ -7,5 +7,6 @@ router.get('/', (req, res) => {
 
 router.post('/signup', createUser);
 router.post('/signin', login);
+router.get('/signout', logout);
 
 module.exports = router;
