@@ -4,7 +4,9 @@
   "description": "Backend for Yandex.Praktikum Diploma project \"Movies Explorer\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "nodemon": "2.0.12"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.13.4"
   }
 }
