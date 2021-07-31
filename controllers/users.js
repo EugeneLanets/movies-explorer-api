@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+const { getToken } = require('../utils/token');
 
 const createUser = async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -19,6 +20,27 @@ const createUser = async (req, res, next) => {
     });
 };
 
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    const { _id } = await User.findUserByCredentials(email, password);
+    const token = getToken({ _id });
+
+    res
+      .cookie('jwt', token, {
+        maxAge: 360000 * 24 * 7,
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      })
+      .send({ message: 'Вход в систему успешно выполнен' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createUser,
+  login,
 };
