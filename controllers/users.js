@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { getToken } = require('../utils/token');
+const makeQuery = require('../utils/query');
 
 const createUser = async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -46,13 +47,43 @@ const logout = async (req, res) => {
     .clearCookie('jwt', {
       httpOnly: true,
       sameSite: 'none',
-      secure: true,
+
     })
     .send({ message: 'Вы успешно вышли из системы!' });
+};
+
+const getUserByID = (req, res, next) => {
+  const { id } = req.params;
+  makeQuery(
+    User.findById(id),
+    res, next,
+    'Запрошенный пользователь не найден',
+  );
+};
+
+const getCurrentUserInfo = async (req, res, next) => {
+  req.params.id = req.user._id;
+  getUserByID(req, res, next);
+};
+
+const updateUser = (req, res, next) => {
+  const id = req.user._id;
+  const { name, email } = req.body;
+  makeQuery(
+    User.findByIdAndUpdate(
+      id,
+      { $set: { name, email } },
+      { new: true, runValidators: true },
+    ),
+    res, next,
+    'Запрошенный пользователь не найден',
+  );
 };
 
 module.exports = {
   createUser,
   login,
   logout,
+  getCurrentUserInfo,
+  updateUser,
 };
