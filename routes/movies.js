@@ -5,6 +5,6 @@ const checkMovieOwner = require('../middlewares/owner');
 
 router.get('/', getMovies);
 router.post('/', createMovie);
-router.delete('/:movieId', checkMovieOwner, deleteMovie);
+router.delete('/:id', checkMovieOwner, deleteMovie);
 
 module.exports = router;

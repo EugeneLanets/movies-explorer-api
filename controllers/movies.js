@@ -23,9 +23,8 @@ const createMovie = (req, res, next) => {
 
 const deleteMovie = (req, res, next) => {
   const { id } = req.params;
-
   makeQuery(
-    Movie.findOneAndDelete({ movieId: id }),
+    Movie.findOneAndDelete({ _id: id }),
     res, next,
     'Запрошенный фильм не найдена',
   );

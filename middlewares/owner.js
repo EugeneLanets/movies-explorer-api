@@ -4,7 +4,7 @@ const NoAuthorizationError = require('../utils/errors/NotFoundError');
 
 const checkMovieOwner = async (req, res, next) => {
   const { id } = req.params;
-  const movie = await Movie.findOne({ movieId: id })
+  const movie = await Movie.findOne({ _id: id })
     .orFail(() => next(new NotFoundError('Запрошенная карточка не найдена')));
 
   if (String(movie.owner) !== req.user._id) {
