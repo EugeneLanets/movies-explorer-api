@@ -2,11 +2,12 @@ const makeQuery = require('../utils/query');
 const Movie = require('../models/movie');
 
 const getMovies = (req, res, next) => {
-  makeQuery(Movie.find({}), res, next);
+  const owner = req.user._id;
+  makeQuery(Movie.find({ owner }), res, next);
 };
 
 const createMovie = (req, res, next) => {
-  const owner = req.body._id;
+  const owner = req.user._id;
 
   Movie.create({ ...req.body, owner })
     .then((receivedData) => res.send(receivedData))
