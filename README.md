@@ -2,7 +2,7 @@
 Web API for registration and authorization on movies site for the Yandex.Praktikum diploma project.
 
 # Дипломный проект Movie-Explorer (backend)
-API преднозначен для регистрации новых и авторизации существующих пользователей, а так же хранения карточек выбранных пользователями фильмов.
+API предназначен для регистрации новых и авторизации существующих пользователей, а так же сохранения карточек выбранных пользователями фильмов.
 ## Роуты
 - POST /signup - создаёт пользователя с переданными в теле email, password и name
 - POST /signin - проверяет переданные в теле почту и пароль и отправляет cookie c JWT
@@ -23,6 +23,9 @@ API доступен по адресу [https://api.mexplorer.nomoredomains.club
 - MongoDB
 
 ## Как развернуть проект локально
+1. Скопировать содержимое репозитория на локальный компьютер
 1. На компьютере должен быть установлен [Node.js](https://nodejs.org/en/download/)
-npm run start - запуск проекта через node server.js
-npm run dev - запуск проекта через nodemon server.js 
+2. В папке  проектом выполнить команду **npm install** для установки зависимостей
+3. Запуск проекта:
+    - **npm run start** - запуск сервера
+    - **npm run dev** - запуск сервера в режиме разработки (hot reload) 

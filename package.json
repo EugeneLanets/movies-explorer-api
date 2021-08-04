@@ -1,6 +1,6 @@
 {
   "name": "movies-explorer-api",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Backend for Yandex.Praktikum Diploma project \"Movies Explorer\"",
   "main": "index.js",
   "scripts": {
