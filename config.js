@@ -22,8 +22,8 @@ const LIMITER_OPTIONS = {
 const CORS_OPTIONS = {
   origin: [
     'http://localhost:3000',
-    'http://lanets.nomoredomains.club',
-    'https://lanets.nomoredomains.club',
+    'http://mexplorer.nomoredomains.club',
+    'https://mexplorer.nomoredomains.club',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
