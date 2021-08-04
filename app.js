@@ -1,5 +1,4 @@
 const express = require('express');
-const { errors } = require('celebrate');
 const { errorLogger } = require('express-winston');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
@@ -31,7 +30,6 @@ app.use(cookieParser());
 app.use(routes);
 
 app.use(errorLogger);
-app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {
