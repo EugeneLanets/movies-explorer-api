@@ -6,7 +6,6 @@ const errorHandler = (error, req, res, next) => {
   if (isCelebrateError(error)) {
     const errorBody = error.details.get('body');
     const { details: [errorDetails] } = errorBody;
-    console.log(errorDetails);
     message = errorDetails.message;
     status = 400;
   }

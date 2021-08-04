@@ -8,9 +8,10 @@ const NotFoundError = require('../utils/errors/NotFoundError');
 
 router.post('/signup', validateSignUp, createUser);
 router.post('/signin', validateSignIn, login);
-router.get('/signout', logout);
 
 router.use(auth);
+
+router.get('/signout', logout);
 
 router.use('/users', userRouter);
 router.use('/movies', moviesRouter);
