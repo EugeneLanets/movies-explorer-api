@@ -47,7 +47,7 @@ const logout = async (req, res) => {
     .clearCookie('jwt', {
       httpOnly: true,
       sameSite: 'none',
-
+      secure: true,
     })
     .send({ message: 'Вы успешно вышли из системы!' });
 };
