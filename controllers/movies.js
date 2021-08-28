@@ -3,7 +3,17 @@ const Movie = require('../models/movie');
 
 const getMovies = (req, res, next) => {
   const owner = req.user._id;
-  makeQuery(Movie.find({ owner }), res, next);
+  Movie.find({ owner })
+    .then((receivedData) => res.send(receivedData))
+    .catch((error) => {
+      if (error.name === 'ValidationError' || error.name === 'CastError') {
+        const status = 400;
+        const message = `Некорректный запрос. ${error.message}`;
+        next({ ...error, status, message });
+      }
+
+      next(error);
+    });
 };
 
 const createMovie = (req, res, next) => {
